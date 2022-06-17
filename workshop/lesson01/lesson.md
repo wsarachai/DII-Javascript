@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > Lesson-01: JavaScript Fundamentals
+## [Home](../../README.md) > Lesson-01: JavaScript Fundamentals
 
 1. [Coding Execrise #1](execrise-1/execrise-1.md)
 2. [Coding Execrise #2](execrise-2/execrise-2.md)
