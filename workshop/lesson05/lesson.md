@@ -1,8 +1,8 @@
 ## [Home](../../../README.md) > Lesson-05: Object Oriented Programming (OOP) with Javascript
 
-1. [Coding Challenge #1](challenge-1/challenge-1.md)
-2. [Coding Challenge #2](challenge-2/challenge-2.md)
-3. [Coding Challenge #3](challenge-3/challenge-3.md)
-4. [Coding Challenge #4](challenge-4/challenge-4.md)
-5. [Coding Challenge #5](challenge-5/challenge-5.md)
-6. [Coding Challenge #6](challenge-6/challenge-6.md)
+1. [Coding Execrise #1](execrise-1/execrise-1.md)
+2. [Coding Execrise #2](execrise-2/execrise-2.md)
+3. [Coding Execrise #3](execrise-3/execrise-3.md)
+4. [Coding Execrise #4](execrise-4/execrise-4.md)
+5. [Coding Execrise #5](execrise-5/execrise-5.md)
+6. [Coding Execrise #6](execrise-6/execrise-6.md)
