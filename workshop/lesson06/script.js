@@ -3,83 +3,40 @@
 const btn = document.querySelector('.btn-weather');
 const weatherContainer = document.querySelector('.weathers');
 
-///////////////////////////////////////
 const weatherHost = 'http://api.openweathermap.org/data/2.5/weather';
 const APPID = '8d3d35a90ed56ca9bbbd9114d29314ad';
 
-const positions = [
-  { lat: 18.89927, lon: 99.012103 },
-  { lat: 53.43097000735902, lon: -2.9608300018337403 },
-  { lat: 18.800889885253508, lon: 98.9503662691891 },
-];
+///////////////////////////////////////
+const getWeatherData = (lat, lon) => {
+  const request = new XMLHttpRequest();
 
-const getJSON = function (url, errorMsg = 'Something went wrong') {
-  return fetch(url).then((response) => {
-    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
-    return response.json();
+  const url = `${weatherHost}?lat=${lat}&lon=${lon}&APPID=${APPID}&units=Metric&lang=th`;
+  request.open('GET', `${url}`);
+  request.send();
+
+  request.addEventListener('load', function () {
+    const data = JSON.parse(request.responseText);
+    const html = `<article class="weather">
+  <div class="weather__data">
+    <img class="country__img"
+         src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"/>
+    <div>
+      <h3 class="weather__name">${data.name}</h3>
+      <h4 class="weather__clouds">${data.weather[0].description}</h4>
+      <p class="weather__row"><span>🌡 อุณหภูมิ</span>${data.main.temp}&#176;C</p>
+      <p class="weather__row"><span>💦 ความชื้น</span>${data.main.pressure}&#37;</p>
+      <p class="weather__row"><span>🌎 ความกด</span>${data.main.humidity} hPa</p>
+      <p class="weather__row"><span>💨 ความเร็วลม</span>${data.wind.speed} km/h</p>
+      <p class="weather__row"><span>🧭 ทิศทางลม</span>${data.wind.deg}&#176;</p>
+    </div>
+  </div>
+</article>`;
+    weatherContainer.insertAdjacentHTML('beforeend', html);
+    weatherContainer.style.opacity = 1;
   });
 };
 
-const timeout = function (sec) {
-  return new Promise(function (_, reject) {
-    setTimeout(() => reject(new Error('Request take too long!')), sec);
-  });
-};
-
-const getWeathers = async function () {
-  const { lat: lat1, lon: lon1 } = positions[0];
-  const { lat: lat2, lon: lon2 } = positions[1];
-  const { lat: lat3, lon: lon3 } = positions[2];
-
-  let data = await Promise.race([
-    getJSON(
-      `${weatherHost}?lat=${lat1}&lon=${lon1}&APPID=${APPID}&units=Metric&lang=th`
-    ),
-    getJSON(
-      `${weatherHost}?lat=${lat2}&lon=${lon2}&APPID=${APPID}&units=Metric&lang=th`
-    ),
-    getJSON(
-      `${weatherHost}?lat=${lat3}&lon=${lon3}&APPID=${APPID}&units=Metric&lang=th`
-    ),
-    timeout(1000),
-  ]);
-  console.log(data.name);
-};
-
-// getWeathers();
-
-// const weather1 = await getJSON(
-//   `${weatherHost}?lat=${lat1}&lon=${lon1}&APPID=${APPID}&units=Metric&lang=th`
-// );
-// const weather2 = await getJSON(
-//   `${weatherHost}?lat=${lat2}&lon=${lon2}&APPID=${APPID}&units=Metric&lang=th`
-// );
-// const weather3 = await getJSON(
-//   `${weatherHost}?lat=${lat3}&lon=${lon3}&APPID=${APPID}&units=Metric&lang=th`
-// );
-// const stations = [weather1.name, weather2.name, weather3.name];
-// console.log(stations);
-
-Promise.allSettled([
-  Promise.resolve('Success'),
-  Promise.reject('ERROR'),
-  Promise.resolve('Another success'),
-])
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
-
-Promise.any([
-  Promise.resolve('Success'),
-  Promise.reject('ERROR'),
-  Promise.resolve('Another success'),
-])
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
-
-Promise.any([
-  Promise.reject('ERROR1'),
-  Promise.reject('ERROR2'),
-  Promise.resolve('Another success'),
-])
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
+btn.addEventListener('click', () => {
+  getWeatherData(18.89927, 99.012103);
+  getWeatherData(53.432031109710564, -2.9608300022781577);
+});

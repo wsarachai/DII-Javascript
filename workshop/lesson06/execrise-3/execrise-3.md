@@ -1,10 +1,10 @@
-## [Home](../../../README.md) > [Back](lesson.md) > Coding Challenge #3
+## [Home](../../../README.md) > [Back](lesson.md) > Coding Execrise #3
 
 ### Your tasks:
 
 ### PART 1
 
-1. Write an async function `'loadNPause'` that recreates Challenge #2, this time using `async/await` (only the part where the promise is consumed, reuse the `'createImage'` function from before)
+1. Write an async function `'loadNPause'` that recreates Execrise #2, this time using `async/await` (only the part where the promise is consumed, reuse the `'createImage'` function from before)
 2. Compare the two versions, think about the big differences, and see which one you like more
 3. Don't forget to test the error handler, and to set the network speed to `“Fast 3G”` in the dev tools Network tab
 

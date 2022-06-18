@@ -5,7 +5,6 @@ const weatherContainer = document.querySelector('.weathers');
 
 ///////////////////////////////////////
 const weatherHost = 'http://api.openweathermap.org/data/2.5/weather';
-const locationHost = 'https://api.openweathermap.org/geo/1.0/direct';
 const APPID = '8d3d35a90ed56ca9bbbd9114d29314ad';
 
 const renderWeather = function (data) {
@@ -48,10 +47,10 @@ const renderError = function (msg) {
 
 const getWeatherData = function (city) {
   fetch(
-    `${locationHost}?q=${city}&limit=1&appid=8d3d35a90ed56ca9bbbd9114d29314ad`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=8d3d35a90ed56ca9bbbd9114d29314ad`
   )
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       if (data.length <= 0)
         throw new Error(`Can't find the [${city}] city name`);
       const [{ lat, lon }] = data;
@@ -59,9 +58,9 @@ const getWeatherData = function (city) {
         `${weatherHost}?lat=${lat}&lon=${lon}&APPID=${APPID}&units=Metric&lang=th`
       );
     })
-    .then((response) => response.json())
-    .then((data) => renderWeather(data))
-    .catch((err) => {
+    .then(response => response.json())
+    .then(data => renderWeather(data))
+    .catch(err => {
       console.error(`${err} 💥💥💥`);
       renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
     })
@@ -74,9 +73,9 @@ btn.addEventListener('click', () => {
   getWeatherData('Chiang Mai');
 });
 
-// 1. Modify the weather code by replacing the 'https://api.openweathermap.org/geo/1.0/direct' with the new Geoparsing API to do forward geocoding: https://geocode.xyz/api. The AJAX call will be done to a URL with this format: 'https://geocode.xyz/Thailand?json=1'. Use the fetch API and promises to get the data.
+// 1. 1. The "https://api.openweathermap.org/geo/1.0/direct" API uses the name of the country to get the information including the location that we use to get the weather data. However,  we will use another Web API. Modify the weather code by replacing the 'https://api.openweathermap.org/geo/1.0/direct' with the new Geoparsing API (API Doc: https://geocode.xyz/api) to get the location instesd, For example, the AJAX call will be called to the URL with this format: 'https://geocode.xyz/Chiang+Mai?json=1'. Use the fetch API and promises to get the data.
 
-// 2. The response data from xxx include the information that succeeded or failed with that API call using the following code to check the error and throw an exception:
+// 2. The response data from Geoparsing API include the information that succeeded or failed with that API call using the following code to check the error and throw an exception:
 
 // ```
 //   if (!response.ok)
