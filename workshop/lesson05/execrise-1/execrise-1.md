@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](lesson.md) > Coding Challenge #1
+## [Home](../../../README.md) > [Back](../lesson.md) > Coding Execrise #1
 
 Let's build a simple poll app!
 
