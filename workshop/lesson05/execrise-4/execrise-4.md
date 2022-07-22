@@ -2,7 +2,7 @@
 
 ### Your tasks:
 
-1. Re-create Challenge #1, but this time using an ES6 class (call it 'CarCl')
+1. Re-create execrise-3, but this time using an ES6 class (call it 'CarCl')
 
 2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6)
 
