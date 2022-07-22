@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Homework #2
+## [Home](../../../README.md) > [Back](../lesson.md) > Homework #7
 
 Let's go back to Mark and John comparing their BMIs! This time, let's use objects to implement the calculations! Remember: BMI = mass / height \*_ 2 = mass / (height _ height) (mass in kg and height in meter)
 
