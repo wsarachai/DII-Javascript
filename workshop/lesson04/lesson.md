@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > Lesson-04: Modern Javascript
+## [Home](../../README.md) > Lesson-04: Modern Javascript
 
 1. [Coding Execrise #1](execrise-1/execrise-1.md)
 2. [Coding Execrise #2](execrise-2/execrise-2.md)
