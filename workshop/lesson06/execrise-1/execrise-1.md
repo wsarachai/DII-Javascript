@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](lesson.md) > Coding Execrise #1
+## [Home](../../../README.md) > [Back](../lesson.md) > Coding Execrise #1
 
 ### Your tasks:
 
