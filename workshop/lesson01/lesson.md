@@ -1,6 +1,6 @@
 ## [Home](../../README.md) > Lesson-01: JavaScript Fundamentals
 
-1. [VSCode Installation](installation/readme.md)
+1. [VSCode Installation and Settings](installation/readme.md)
 2. [Coding Execrise #1](execrise-1/execrise-1.md)
 3. [Coding Execrise #2](execrise-2/execrise-2.md)
 4. [Coding Execrise #3](execrise-3/execrise-3.md)

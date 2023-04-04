@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](readme.md) > VSCode Installation and Settings
+## [Home](../../../../README.md) > [Back](../readme.md) > VSCode Installation and Settings
 
 ### Your tasks:
 

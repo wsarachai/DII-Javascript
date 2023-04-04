@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > VSCode Text Editor
+## [Home](../../../../README.md) > [Back](../readme.md) > VSCode Text Editor
 
 ### Your tasks:
 

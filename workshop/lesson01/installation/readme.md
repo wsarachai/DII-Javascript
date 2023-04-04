@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Installation
+## [Home](../../../README.md) > [Back](../lesson.md) > Installation and Settings
 
 ### Your tasks:
 
