@@ -1,18 +1,59 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > VSCode Settings
+## [Home](../../../README.md) > [Back](../lesson.md) > VSCode Text Editor
 
 ### Your tasks:
 
-1. Click the gear icon (<img width="16" src="../imgs/img_1.png">) on the left bottom corner and select `Settings`.
-   <br/><br/><img width="255" src="../imgs/img_6.png"><br/><br/>
+1. Open file [script.txt](script.txt) and create multi select word:
+   - use `Ctrl+Shift+L` for Window or `Cmd+Shift+L` for Mac to select multi word.
+   - use `Alt+Click` for Windows or `Cmd+Click` for Mac to create multi cursor.
+2. Select every `SCORE` and change to `GOAL`
 
-   - Type `Auto Save` in the search box and then select `OnFocusChange` in the select list of the `File: Auto Save` section.
-     <br/><br/><img width="512" src="../imgs/img_4.png"><br/><br/>
+   ```
+     const gameEvents = new Map([
+     [17, '⚽ SCORE'],
+     [36, '🔁 Substitution'],
+     [47, '⚽ SCORE'],
+     [61, '🔁 Substitution'],
+     [64, '🔶 Yellow card'],
+     [69, '🔴 Red card'],
+     [70, '🔁 Substitution'],
+     [72, '🔁 Substitution'],
+     [76, '⚽ SCORE'],
+     [80, '⚽ SCORE'],
+     [92, '🔶 Yellow card'],
+     ]);
+   ```
 
-2. Multi select modifier settings of the VSCode
+   Change to:
 
-   - Click the gear icon (<img width="16" src="../imgs/img_1.png">) on the left bottom corner and select `Settings`.
-   - Type `Multi Select Modifier` in the search box and then select `Alt` in the select list.
-     <br/><br/><img width="512" src="../imgs/img_7.png"><br/><br/>
+   ```
+     const gameEvents = new Map([
+     [17, '⚽ GOAL'],
+     [36, '🔁 Substitution'],
+     [47, '⚽ GOAL'],
+     [61, '🔁 Substitution'],
+     [64, '🔶 Yellow card'],
+     [69, '🔴 Red card'],
+     [70, '🔁 Substitution'],
+     [72, '🔁 Substitution'],
+     [76, '⚽ GOAL'],
+     [80, '⚽ GOAL'],
+     [92, '🔶 Yellow card'],
+     ]);
+   ```
 
-3. Open file [script.txt](script.txt) and use `Alt+Click` for Window or `Cmd+Click` for Mac to create multi select as show below:
-   <br/><br/>[video](../clips/multi-select-mouse.mp4)
+3. use `Middle Mouse+Drag` for Windows or `Option key+Drag` for Mac to create a multi cursor and insert space before the child element of the array. The result as shown below:
+   ```
+     const gameEvents = new Map([
+         [17, '⚽ GOAL'],
+         [36, '🔁 Substitution'],
+         [47, '⚽ GOAL'],
+         [61, '🔁 Substitution'],
+         [64, '🔶 Yellow card'],
+         [69, '🔴 Red card'],
+         [70, '🔁 Substitution'],
+         [72, '🔁 Substitution'],
+         [76, '⚽ GOAL'],
+         [80, '⚽ GOAL'],
+         [92, '🔶 Yellow card'],
+     ]);
+   ```

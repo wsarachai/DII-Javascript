@@ -2,5 +2,5 @@
 
 ### Your tasks:
 
-- [VSCode Installation](execrise-1/execrise-1.md)
-- [VSCode Settings](execrise-2/execrise-2.md)
+- [VSCode Installation and Settings](execrise-1/execrise-1.md)
+- [VSCode Text Editor](execrise-2/execrise-2.md)
