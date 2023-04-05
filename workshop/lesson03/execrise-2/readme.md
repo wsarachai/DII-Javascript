@@ -1,8 +1,8 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Homework #1
+## [Home](../../../README.md) > [Back](../lesson.md) > Execrise #2
 
-Implement a game rest functionality, so that the player can make a new guess!
+Implement a Modal Window
 
-<img src="../execrise-1/img.png" width="350"/>
+<img src="../execrise-3/img.png" width="350"/>
 
 ### Your tasks: (update code in [Execrise #1](../execrise-1/script.js))
 
