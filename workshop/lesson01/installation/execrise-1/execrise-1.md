@@ -10,7 +10,7 @@
     - After the installation is completed, run and execute the program.
       <br/><br/><img width="512" src="../imgs/img.png"><br/><br/>
 3.  Selecting the VSCode theme
-    - Install `Monokai Pro` theme by seleting the extension tab and type `Monokai Pro` as shown below:
+    - Install `Monokai Pro` theme by seleting the extension tab and type `Monokai Pro` in the search box as shown below:
       <br/><br/><img width="512" src="../imgs/img_5.png"><br/><br/>
     - Click `Install` button.
     - Change the theme to `Monokai Pro`
