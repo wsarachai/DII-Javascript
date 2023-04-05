@@ -1,6 +1,6 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Homework #2
+## [Home](../../../README.md) > [Back](../lesson.md) > Execrise #4
 
-Use the BMI example from Homework #1, and the code you already wrote, and
+Use the BMI example from execrise #3, and the code you already wrote, and
 improve it.
 
 ### Your tasks:
