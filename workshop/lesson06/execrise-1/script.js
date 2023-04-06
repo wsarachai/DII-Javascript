@@ -1,85 +1,31 @@
 'use strict';
 
-const btn = document.querySelector('.btn-weather');
-const weatherContainer = document.querySelector('.weathers');
+// 1. Create a method called 'registerNewAnswer' on the 'poll' object. The method does 2 things:
+//    - Display a prompt window for the user to input the number of the
+//      selected option. The prompt should look like this:
+//      ```
+//      What is your favourite programming language?
+//      0: JavaScript
+//      1: Python
+//      2: Rust
+//      3: C++
+//      (Write option number)
+//      ```
+//    - Based on the input number, update the 'answers' array property. For example, if the option is 3, increase the value at position 3 of the array by 1. Make sure to check if the input is a number and if the number makes sense (e.g. answer 52 wouldn't make sense, right?)
 
-///////////////////////////////////////
-const weatherHost = 'http://api.openweathermap.org/data/2.5/weather';
-const APPID = '8d3d35a90ed56ca9bbbd9114d29314ad';
+// 2. Call this method whenever the user clicks the "Answer poll" button.
 
-const renderWeather = function (data) {
-  const html = `<article class="weather">
-  <div class="weather__data">
-    <img
-      class="weather__img"
-      src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"
-    />
-    <div>
-      <h3 class="weather__name">${data.name}</h3>
-      <h4 class="weather__clouds">${data.weather[0].description}</h4>
-      <p class="weather__row">
-        <span>🌡 อุณหภูมิ</span>${data.main.temp}&#176;C
-      </p>
-      <p class="weather__row">
-        <span>💦 ความชื้น</span>${data.main.humidity}&#37;
-      </p>
-      <p class="weather__row">
-        <span>🌎 ความกด</span>${data.main.pressure} hPa
-      </p>
-      <p class="weather__row">
-        <span>💨 ความเร็วลม</span>${data.wind.speed} km/h
-      </p>
-      <p class="weather__row">
-        <span>🧭 ทิศทางลม</span>${data.wind.deg}&#176;
-      </p>
-    </div>
-  </div>
-</article>`;
+// 3. Create a method 'displayResults' which displays the poll results. The method takes a string as an input (called 'type'), which can be either 'string' or 'array'. If type is 'array', simply display the results array as it is, using console.log(). This should be the default option. If type is 'string', display a string like "Poll results are 13, 2, 4, 1".
 
-  weatherContainer.insertAdjacentHTML('beforeend', html);
-  // weatherContainer.style.opacity = 1;
+// 4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call.
+
+// 5. Bonus: Use the 'displayResults' method to display the 2 arrays in the test data. Use both the 'array' and the 'string' option. Do not put the arrays in the poll object! So what should the this keyword look like in this situation?
+
+const poll = {
+  question: 'What is your favourite programming language',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  // This generates [0, 0, 0, 0]. More in the next section!
+  answers: new Array(4).fill(0),
 };
 
-const renderError = function (msg) {
-  weatherContainer.insertAdjacentText('beforeend', msg);
-  // weatherContainer.style.opacity = 1;
-};
-
-const getWeatherData = function (city) {
-  fetch(
-    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=8d3d35a90ed56ca9bbbd9114d29314ad`
-  )
-    .then(response => response.json())
-    .then(data => {
-      if (data.length <= 0)
-        throw new Error(`Can't find the [${city}] city name`);
-      const [{ lat, lon }] = data;
-      return fetch(
-        `${weatherHost}?lat=${lat}&lon=${lon}&APPID=${APPID}&units=Metric&lang=th`
-      );
-    })
-    .then(response => response.json())
-    .then(data => renderWeather(data))
-    .catch(err => {
-      console.error(`${err} 💥💥💥`);
-      renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
-    })
-    .finally(() => {
-      weatherContainer.style.opacity = 1;
-    });
-};
-
-btn.addEventListener('click', () => {
-  getWeatherData('Chiang Mai');
-});
-
-// 1. 1. The "https://api.openweathermap.org/geo/1.0/direct" API uses the name of the country to get the information including the location that we use to get the weather data. However,  we will use another Web API. Modify the weather code by replacing the 'https://api.openweathermap.org/geo/1.0/direct' with the new Geoparsing API (API Doc: https://geocode.xyz/api) to get the location instesd, For example, the AJAX call will be called to the URL with this format: 'https://geocode.xyz/Chiang+Mai?json=1'. Use the fetch API and promises to get the data.
-
-// 2. The response data from Geoparsing API include the information that succeeded or failed with that API call using the following code to check the error and throw an exception:
-
-// ```
-//   if (!response.ok)
-//     throw new Error(`Something went wrong (${response.status})`);
-// ```
-
-// you can use `console.log(response)` to see the details.
+poll.registerNewAnswer();
