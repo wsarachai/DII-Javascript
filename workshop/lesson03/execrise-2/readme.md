@@ -1,8 +1,7 @@
 ## [Home](../../../README.md) > [Back](../lesson.md) > Execrise #2
 
 Implement a Modal Window
-
-<img src="../execrise-2/img.png" width="512"/>
+<br/><br/><img src="../execrise-2/img.png" width="512"/><br/><br/>
 
 ### Your tasks:
 
