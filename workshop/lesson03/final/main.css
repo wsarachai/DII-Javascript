@@ -5,7 +5,6 @@
 }
 body {
   background-color: #5f5f5f;
-  background-image: url(../images/pink-flowers.webp);
 }
 h1 {
   color: #ffffff;
@@ -79,7 +78,7 @@ p.clear {
   padding: 20px 20px 20px 20px;
   border: 1px solid #cccccc;
   margin: 30px auto 0 auto;
-  background: #ffffff url(../images/moroccan-flower.png) top left repeat;
+  background: #ffffff url(images/moroccan-flower.png) top left repeat;
 }
 .header a {
   color: #ffffff;
