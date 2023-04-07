@@ -1,3 +1,5 @@
-## [Home](../../README.md) > Lesson-03: JavaScript Behind the Scenes
+## [Home](../../README.md) > Lesson-04: JavaScript in the Browser DOM and Event Fundamental
 
 1. [Execrise #1](execrise-1/readme.md)
+2. [Execrise #2](execrise-2/readme.md)
+3. [Execrise #3](execrise-3/readme.md)

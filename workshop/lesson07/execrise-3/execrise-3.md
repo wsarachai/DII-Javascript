@@ -2,19 +2,15 @@
 
 ### Your tasks:
 
-### PART 1
+1. Use a constructor function to implement a 'Car'. A car has a 'make' and a 'speed' property. The 'speed' property is the current speed of the car in km/h
 
-1. Write an async function `'loadNPause'` that recreates Execrise #2, this time using `async/await` (only the part where the promise is consumed, reuse the `'createImage'` function from before)
-2. Compare the two versions, think about the big differences, and see which one you like more
-3. Don't forget to test the error handler, and to set the network speed to `“Fast 3G”` in the dev tools Network tab
+2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console
 
-### PART 2
+3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console
 
-1. Create an async function `'loadAll'` that receives an array of image paths `'imgArr'`
-2. Use `.map` to loop over the array, to load all the images with the `'createImage'` function (call the resulting array `'imgs'`)
-3. Check out the `'imgs'` array in the console! Is it like you expected?
-4. Use a promise combinator function to actually get the images from the array 😉
-5. Add the `'parallel'` class to all the images (it has some CSS styles)
+4. Create 2 'Car' objects and experiment with calling 'accelerate' and 'brake' multiple times on each of them
 
-###Test data Part 2:
-`['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']`. To test, turn off the `'loadNPause'` function
+### Test data:
+
+- Data car 1: 'BMW' going at 120 km/h
+- Data car 2: 'Mercedes' going at 95 km/h

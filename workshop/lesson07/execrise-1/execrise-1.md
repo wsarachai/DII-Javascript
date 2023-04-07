@@ -1,20 +1,38 @@
 ## [Home](../../../README.md) > [Back](../lesson.md) > Coding Execrise #1
 
+Let's build a simple poll app!
+
+A poll has a question, an array of options from which people can choose, and an array with the number of replies for each option. This data is stored in the starter 'poll' object below.
+
 ### Your tasks:
 
-1. The "https://api.openweathermap.org/geo/1.0/direct" API uses the name of the country to get the information including the location that we use to get the weather data. However, we will use another Web API. Modify the weather code by replacing the 'https://api.openweathermap.org/geo/1.0/direct' with the new Geoparsing API (API Doc: https://geocode.xyz/api) to get the location instesd, For example, the AJAX call will be called to the URL with this format: 'https://geocode.xyz/Chiang+Mai?json=1'. Use the fetch API and promises to get the data.
+1. Create a method called 'registerNewAnswer' on the 'poll' object. The method does 2 things:
+   - Display a prompt window for the user to input the number of the selected option. The prompt should look like this:
+     ```
+     What is your favourite programming language?
+     0: JavaScript
+     1: Python
+     2: Rust
+     3: C++
+     (Write option number)
+     ```
+   - Based on the input number, update the 'answers' array property. For example, if the option is 3, increase the value at position 3 of the array by 1. Make sure to check if the input is a number and if the number makes sense (e.g. answer 52 wouldn't make sense, right?)
+2. Call this method whenever the user clicks the "Answer poll" button.
+3. Create a method 'displayResults' which displays the poll results. The method takes a string as an input (called 'type'), which can be either 'string' or 'array'. If type is 'array', simply display the results array as it is, using console.log(). This should be the default option. If type is 'string', display a string like "Poll results are 13, 2, 4, 1".
 
-2. The response data from xxx include the information that succeeded or failed with that API call using the following code to check the error and throw an exception:
+4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call.
 
-```
-  if (!response.ok)
-    throw new Error(`Something went wrong (${response.status})`);
-```
-
-you can use `console.log(response)` to see the details.
+5. Bonus: Use the 'displayResults' method to display the 2 arrays in the test data. Use both the 'array' and the 'string' option. Do not put the arrays in the poll object! So what should the this keyword look like in this situation?
 
 ### Test data for bonus:
 
-- Country or City 1: Chiang Mai
-- Coordinates 2: London
-- Coordinates 3: Usa
+- Data 1: [5, 2, 3]
+- Data 2: [1, 5, 3, 9, 6, 1]
+
+### Hints:
+
+Use many of the tools you learned about in this and the last section 😉
+
+```
+
+```

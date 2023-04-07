@@ -1,15 +1,33 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Coding Execrise #4
+## [Home](../../../README.md) > [Back](lesson.md) > Coding Challenge #4
 
-### Your tasks:
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase. The input will come from a textarea inserted into the DOM (see code below to insert the elements), and conversion will happen when the button is pressed.
 
-1. Re-create execrise-3, but this time using an ES6 class (call it 'CarCl')
+### Test data (pasted to textarea, including spaces):
 
-2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6)
+```
+underscore_case
+ first_name
+Some_Variable
+  calculate_AGE
+delayed_departure
+```
 
-3. Add a setter called 'speedUS' which sets the current speed in mi/h (but converts it to km/h before storing the value, by multiplying the input by 1.6)
+### Should produce this output (5 separate console.log outputs):
 
-4. Create a new car and experiment with the 'accelerate' and 'brake' methods, and with the getter and setter.
+```
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅
+```
 
-### Test data:
+### Hints:
 
-- Data car 1: 'Ford' going at 120 km/h
+- Remember which character defines a new line in the textarea 😉
+- The solution only needs to work for a variable made out of 2 words, like a_b
+- Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+- This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
+- Use this [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) to find more information on String methods used in this task.
+
+### Afterwards, test with your own test data!

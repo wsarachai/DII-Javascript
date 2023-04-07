@@ -1,130 +1,95 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Homework #2: Pig Game
+## [Home](../../../README.md) > [Back](../lesson.md) > Execrise #1
+
+### Gassing number game
 
 ### Your tasks:
 
-### Implement the Pig game.
+1. Implement the real Guess the Number Game.
+   <br/><br/><img src="img.png" width="512"/><br/><br/>
 
-<br/><br/><img src="../execrise-1/img.png" width="512"/><br/>
-<br/><br/><img src="../execrise-1/pig-game-flowchart.png"/><br/><br/>
-
-1. Write the code to select the necessary elements
-
-   ```
-   const player0El = document.querySelector('.player--0');
-   const player1El = document.querySelector('.player--1');
-   const score0El = document.querySelector('#score--0');
-   const score1El = document.getElementById('score--1');
-   const current0El = document.getElementById('current--0');
-   const current1El = document.getElementById('current--1');
-
-   const diceEl = document.querySelector('.dice');
-   const btnNew = document.querySelector('.btn--new');
-   const btnRoll = document.querySelector('.btn--roll');
-   const btnHold = document.querySelector('.btn--hold');
-   ```
-
-2. Declare the global variables
-
-   ```
-   let scores, currentScore, activePlayer, playing;
-   ```
-
-3. Append the `.hidden` class to the [style.css](style.css) file
-   ```
-   .hidden {
-     display: none;
-   }
-   ```
-4. Init all variables with these code below:
-
-   ```
-   scores = [0, 0];
-   currentScore = 0;
-   activePlayer = 0;
-   playing = true;
-
-   score0El.textContent = 0;
-   score1El.textContent = 0;
-   current0El.textContent = 0;
-   current1El.textContent = 0;
-
-   diceEl.classList.add('hidden');
-   player0El.classList.remove('player--winner');
-   player1El.classList.remove('player--winner');
-   player0El.classList.add('player--active');
-   player1El.classList.remove('player--active');
-   ```
-
-5. Implement the `switchPlayer` function for switching the current player
-   ```
-   const switchPlayer = function () {
-     document.getElementById(`current--${activePlayer}`).textContent = 0;
-     currentScore = 0;
-     activePlayer = activePlayer === 0 ? 1 : 0;
-     player0El.classList.toggle('player--active');
-     player1El.classList.toggle('player--active');
-   };
-   ```
-6. Implement the rolling dice functionality
-
-   - Add the event handler `click` to the `btnRoll` button
+   - Init the variables and the secret number
+     ```
+     let secretNumber = Math.trunc(Math.random() * 20) + 1;
+     let score = 20;
+     let highscore = 0;
+     ```
+   - Create the `displayMessage` function
 
      ```
-     btnRoll.addEventListener('click', function () {
-       if (playing) {
-         // 1. Generating a random dice roll
+     const displayMessage = function (message) {
+       document.querySelector('.message').textContent = message;
+     };
+     ```
 
-         // 2. Display dice
+   - Add the `click` listener to the `check!` button to Check the correct number.
 
-         // 3. Check for rolled 1
+     ```
+     document.querySelector('.check').addEventListener('click', function () {
+       // Insert code here
 
-       }
      });
      ```
 
-7. Hold button implementation
+     - Inside the listener function, insert the code below:
 
-   - Add the event handler `click` to the `btnHold` button
+       - Retrieve the guess number from the HTML input element that has `.guess` class.
+         ```
+         const guess = Number(document.querySelector('.guess').value);
+         console.log(guess, typeof guess);
+         ```
+       - When the user click the `Check!` button, write the code to check the guess number:
 
-     ```
-     btnHold.addEventListener('click', function () {
-       if (playing) {
-         // 1. Add current score to active player's score
+         ```
+           if (!guess) {
+             // When there is no input
 
-         // 2. Check if player's score is >= 100
+           } else if (guess === secretNumber) {
+             // When player wins
 
-       }
-     });
-     ```
+           } else if (guess !== secretNumber) {
+             // When guess is wrong
 
-8. Test the game
+           }
+         ```
 
-9. Coding Challenge: implement a game rest functionality, so that the player can restart the conditions, here is how:
+         - From the previous `if-else` code, in case, when there is no input:
 
-   - Define the `init` function to call whenever the game needs to init all conditions
-   - Move all init code as shown below to the `init` function and call the `init` function instead:
+           ```
+           displayMessage('⛔️ No number!');
+           ```
 
-     ```
-     scores = [0, 0];
-     currentScore = 0;
-     activePlayer = 0;
-     playing = true;
+         - From the previous `if-else` code, when player wins:
 
-     score0El.textContent = 0;
-     score1El.textContent = 0;
-     current0El.textContent = 0;
-     current1El.textContent = 0;
+           ```
+           displayMessage('🎉 Correct Number!');
+           document.querySelector('.number').textContent = secretNumber;
 
-     diceEl.classList.add('hidden');
-     player0El.classList.remove('player--winner');
-     player1El.classList.remove('player--winner');
-     player0El.classList.add('player--active');
-     player1El.classList.remove('player--active');
-     ```
+           document.querySelector('body').style.backgroundColor = '#60b347';
+           document.querySelector('.number').style.width = '30rem';
 
-   - The game can restart again by clicking the `🔄 New game` button, so, add the event handler `click` to the `btnNew` button to call the `init` function
-     ```
-     btnNew.addEventListener('click', init);
-     ```
+           if (score > highscore) {
+             highscore = score;
+             document.querySelector('.highscore').textContent = highscore;
+           }
+           ```
+
+         - From the previous `if-else` code, when guess is wrong:
+           ```
+           if (score > 1) {
+             displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
+             score--;
+             document.querySelector('.score').textContent = score;
+           } else {
+             displayMessage('💥 You lost the game!');
+             document.querySelector('.score').textContent = 0;
+           }
+           ```
+
+2. Coding Challenge
+   - Implement a game rest functionality, so that the player can make a new guess! Here is how:
+     - Select the element with the 'again' class and attach a click event handler
+     - In the handler function, restore initial values of the score and secretNumber variables
+     - Restore the initial conditions of the message, number, score and guess input field
+     - Also restore the original background color (#222) and number width (15rem)
 
 GOOD LUCK 😀

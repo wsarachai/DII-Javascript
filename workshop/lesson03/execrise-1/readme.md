@@ -1,95 +1,21 @@
 ## [Home](../../../README.md) > [Back](../lesson.md) > Execrise #1
 
-### Gassing number game
+### Decorate the Recpie Website with using HTML tags
 
 ### Your tasks:
 
-1. Implement the real Guess the Number Game.
-   <br/><br/><img src="img.png" width="512"/><br/><br/>
-
-   - Init the variables and the secret number
-     ```
-     let secretNumber = Math.trunc(Math.random() * 20) + 1;
-     let score = 20;
-     let highscore = 0;
-     ```
-   - Create the `displayMessage` function
-
-     ```
-     const displayMessage = function (message) {
-       document.querySelector('.message').textContent = message;
-     };
-     ```
-
-   - Add the `click` listener to the `check!` button to Check the correct number.
-
-     ```
-     document.querySelector('.check').addEventListener('click', function () {
-       // Insert code here
-
-     });
-     ```
-
-     - Inside the listener function, insert the code below:
-
-       - Retrieve the guess number from the HTML input element that has `.guess` class.
-         ```
-         const guess = Number(document.querySelector('.guess').value);
-         console.log(guess, typeof guess);
-         ```
-       - When the user click the `Check!` button, write the code to check the guess number:
-
-         ```
-           if (!guess) {
-             // When there is no input
-
-           } else if (guess === secretNumber) {
-             // When player wins
-
-           } else if (guess !== secretNumber) {
-             // When guess is wrong
-
-           }
-         ```
-
-         - From the previous `if-else` code, in case, when there is no input:
-
-           ```
-           displayMessage('⛔️ No number!');
-           ```
-
-         - From the previous `if-else` code, when player wins:
-
-           ```
-           displayMessage('🎉 Correct Number!');
-           document.querySelector('.number').textContent = secretNumber;
-
-           document.querySelector('body').style.backgroundColor = '#60b347';
-           document.querySelector('.number').style.width = '30rem';
-
-           if (score > highscore) {
-             highscore = score;
-             document.querySelector('.highscore').textContent = highscore;
-           }
-           ```
-
-         - From the previous `if-else` code, when guess is wrong:
-           ```
-           if (score > 1) {
-             displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
-             score--;
-             document.querySelector('.score').textContent = score;
-           } else {
-             displayMessage('💥 You lost the game!');
-             document.querySelector('.score').textContent = 0;
-           }
-           ```
-
-2. Coding Challenge
-   - Implement a game rest functionality, so that the player can make a new guess! Here is how:
-     - Select the element with the 'again' class and attach a click event handler
-     - In the handler function, restore initial values of the score and secretNumber variables
-     - Restore the initial conditions of the message, number, score and guess input field
-     - Also restore the original background color (#222) and number width (15rem)
-
-GOOD LUCK 😀
+1. Open the [index.html](index.html) file and follow the instructions below to decorate using HTML tags:
+   1. The output before modifying as shown below:
+      <br/><br/><img width="350" src="img_4.png"/><br/><br/>
+   2. All headers will be marked as heading tags, higher heading numbers mean the content between the headings is less important than lower numbers
+      <br/><br/><img src="img_1.png" width="512"/><br/><br/>
+   3. Add paragraph content (where necessary) in between heading tags.
+   4. Use an unordered list to display a list of things
+      <br/><br/><img src="img_2.png" width="512"/><br/><br/>
+   5. Use an ordered list to show list items in a certain order
+      <br/><br/><img src="img_3.png" width="300"/><br/><br/>
+   6. Don't forget to delete `<br/>` tags from the old style code
+2. Do the same thing for the another [recipes.html](recipes.html) file
+   <br/><br/><img src="img_6.png" height="400"/><br/><br/>
+3. Do the same thing for the another [legal.html](legal.html) file
+   <br/><br/><img src="img_5.png" width="512"/><br/><br/>
