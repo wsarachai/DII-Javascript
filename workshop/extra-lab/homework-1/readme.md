@@ -15,5 +15,7 @@
    5. Use an ordered list to show list items in a certain order
       <br/><br/><img src="img_3.png" width="300"/><br/><br/>
    6. Don't forget to delete `<br/>` tags from the old style code
-2. Do the same thing for the another [legal.html](legal.html) file
+2. Do the same thing for the another [recipes.html](recipes.html) file
+   <br/><br/><img src="img_6.png" height="400"/><br/><br/>
+3. Do the same thing for the another [legal.html](legal.html) file
    <br/><br/><img src="img_5.png" width="512"/><br/><br/>
