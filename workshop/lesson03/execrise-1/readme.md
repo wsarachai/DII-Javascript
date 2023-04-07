@@ -4,7 +4,8 @@
 
 ### Your tasks:
 
-1. Open the [index.html](index.html) file and follow the instructions below to decorate using HTML tags:
+1. Open the [index.html](index.html) file and clicks on the <img height="16" src="../../common/imgs/go-live.png"> button at the status bar to start the Live-Server.
+2. Follow the instructions below to decorate using HTML tags:
    1. The output before modifying as shown below:
       <br/><br/><img width="350" src="img_4.png"/><br/><br/>
    2. All headers will be marked as heading tags, higher heading numbers mean the content between the headings is less important than lower numbers
@@ -15,7 +16,7 @@
    5. Use an ordered list to show list items in a certain order
       <br/><br/><img src="img_3.png" width="300"/><br/><br/>
    6. Don't forget to delete `<br/>` tags from the old style code
-2. Do the same thing for the another [recipes.html](recipes.html) file
+3. Do the same thing for the another [recipes.html](recipes.html) file
    <br/><br/><img src="img_6.png" height="400"/><br/><br/>
-3. Do the same thing for the another [legal.html](legal.html) file
+4. Do the same thing for the another [legal.html](legal.html) file
    <br/><br/><img src="img_5.png" width="512"/><br/><br/>

@@ -66,7 +66,7 @@
    - Click `Install` button
 3. JavaScript coding basic
 
-   - Open the [index.html](index.html) file and clicks on the <img height="16" src="imgs/img-0.png"> button at the status bar to start the Live-Server.
+   - Open the [index.html](index.html) file and clicks on the <img height="16" src="../../common/imgs/go-live.png"> button at the status bar to start the Live-Server.
      <img width="512" src="imgs/img-2.png"/>
    - The `index.html` load and execute the `script.js` file and we can see some output in the console.
    - Write the `script.js` file to display the output as shown below:
