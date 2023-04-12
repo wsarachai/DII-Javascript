@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](lesson.md) > Coding Challenge #2
+## [Home](../../../README.md) > [Back](../lesson.md) > Coding Challenge #2
 
 Let's continue with our football betting app! Keep using the 'game' variable from
 before.

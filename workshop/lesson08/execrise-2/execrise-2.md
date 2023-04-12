@@ -2,26 +2,14 @@
 
 ### Your tasks:
 
-Tasks are not super-descriptive this time so you can figure out some stuff by yourself. Pretend you're working on your own 😉.
+1. Use a constructor function to implement an Electric Car (called 'EV') as a child "class" of 'Car'. Besides a make and current speed, the 'EV' also has the current battery charge in % ('charge' property)
 
-### PART 1
+2. Implement a 'chargeBattery' method which takes an argument 'chargeTo' and sets the battery charge to 'chargeTo'
 
-1. Create a function 'createImage' which receives 'imgPath' as an input. This function returns a promise which creates a new image (use `document.createElement('img')`) and sets the `.src` attribute to the provided image path.
+3. Implement an 'accelerate' method that will increase the car's speed by 20, and decrease the charge by 1%. Then log a message like this: 'Tesla going at 140 km/h, with a charge of 22%'
 
-2. When the image is done loading (listen for the `'load'` event), append it to the DOM element with the `'images'` class, and resolve the promise. The fulfilled value should be the image element itself. In case there is an error loading the image (listen for the `'error'` event), reject the promise.
+4. Create an electric car object and experiment with calling 'accelerate', 'brake' and 'chargeBattery' (charge to 90%). Notice what happens when you 'accelerate'! Hint: Review the definiton of polymorphism 😉
 
-### PART 2
+### Test data:
 
-4. Consume the promise using `.then` and also add an error handler.
-
-5. After the image has loaded, pause execution for 2 seconds using the provided `wait(...)` function, the function is already created for you.
-
-6. After the 2 seconds have passed, hide the current image (set `display` CSS property to `'none'`), and load a second image (Hint: Use the image element returned by the `'createImage'` promise to hide the current image. You will need a global variable for that 😉).
-
-7. After the second image has loaded, pause execution for 2 seconds again.
-
-8. After the 2 seconds have passed, hide the current image
-
-### Test data for bonus:
-
-Images in the img folder. Test the error handler by passing a wrong image path. Set the network speed to “Fast 3G” in the dev tools Network tab, otherwise images load too fast
+- Data car 1: 'Tesla' going at 120 km/h, with a charge of 23%

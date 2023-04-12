@@ -2,4 +2,3 @@
 
 1. [Execrise #1](execrise-1/readme.md)
 2. [Execrise #2](execrise-2/readme.md)
-3. [Execrise #3](execrise-3/readme.md)

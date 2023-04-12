@@ -2,19 +2,14 @@
 
 ### Your tasks:
 
-1. The "https://api.openweathermap.org/geo/1.0/direct" API uses the name of the country to get the information including the location that we use to get the weather data. However, we will use another Web API. Modify the weather code by replacing the 'https://api.openweathermap.org/geo/1.0/direct' with the new Geoparsing API (API Doc: https://geocode.xyz/api) to get the location instesd, For example, the AJAX call will be called to the URL with this format: 'https://geocode.xyz/Chiang+Mai?json=1'. Use the fetch API and promises to get the data.
+1. Re-create lesson07->execrise-3, but this time using an ES6 class (call it 'CarCl')
 
-2. The response data from xxx include the information that succeeded or failed with that API call using the following code to check the error and throw an exception:
+2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6)
 
-```
-  if (!response.ok)
-    throw new Error(`Something went wrong (${response.status})`);
-```
+3. Add a setter called 'speedUS' which sets the current speed in mi/h (but converts it to km/h before storing the value, by multiplying the input by 1.6)
 
-you can use `console.log(response)` to see the details.
+4. Create a new car and experiment with the 'accelerate' and 'brake' methods, and with the getter and setter.
 
-### Test data for bonus:
+### Test data:
 
-- Country or City 1: Chiang Mai
-- Coordinates 2: London
-- Coordinates 3: Usa
+- Data car 1: 'Ford' going at 120 km/h
