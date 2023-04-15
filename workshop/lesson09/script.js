@@ -4,7 +4,7 @@ const btn = document.querySelector('.btn-weather');
 const weatherContainer = document.querySelector('.weathers');
 
 const weatherHost = 'http://api.openweathermap.org/data/2.5/weather';
-const APPID = '8d3d35a90ed56ca9bbbd9114d29314ad';
+const APPID = '2846a532501b4c37921bfd3614d8c26a';
 
 ///////////////////////////////////////
 const getWeatherData = (lat, lon) => {
