@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Coding Execrise #1
+## [Home](../../../README.md) > [Back](../lesson.md) > Execrise #1
 
 Let's build a simple poll app!
 
@@ -33,6 +33,25 @@ A poll has a question, an array of options from which people can choose, and an 
 
 Use many of the tools you learned about in this and the last section 😉
 
-```
+#### Prompt Box
+A prompt box is often used if you want the user to input a value before entering a page.
 
+When a prompt box pops up, the user will have to click either "OK" or "Cancel" to proceed after entering an input value.
+
+If the user clicks "OK" the box returns the input value. If the user clicks "Cancel" the box returns null.
+##### Syntax
+```
+window.prompt("sometext","defaultText");
+```
+The `window.prompt()` method can be written without the window prefix.
+
+##### Example
+```
+let person = prompt("Please enter your name", "Harry Potter");
+let text;
+if (person == null || person == "") {
+  text = "User cancelled the prompt.";
+} else {
+  text = "Hello " + person + "! How are you today?";
+}
 ```

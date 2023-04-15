@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Homework #2: Pig Game
+## [Home](../../../README.md) > [Back](../lesson.md) > Execrise #1: Pig Game
 
 ### Your tasks:
 

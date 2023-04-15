@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Coding Challenge #1
+## [Home](../../../README.md) > [Back](../lesson.md) > Execrise #1
 
 We're building a football betting app (soccer for my American friends 😅)!
 Suppose we get data from a web service about a certain game ('game' variable is in the [script.js](script.js) file). In this challenge we're gonna work with that data.

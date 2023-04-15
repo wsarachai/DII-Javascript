@@ -1,3 +1,3 @@
-## [Home](../../README.md) > Lesson-10: MongoDB
+## [Home](../../README.md) > Lesson-12: MongoDB
 
-1. [Coding Execrise #1](execrise-1/execrise-1.md)
+1. [Execrise #1](execrise-1/execrise-1.md)

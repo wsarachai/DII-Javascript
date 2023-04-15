@@ -1,4 +1,4 @@
-## [Home](../../../README.md) > [Back](../lesson.md) > Coding Challenge #3
+## [Home](../../../README.md) > [Back](../lesson.md) > Execrise #3
 
 Let's continue with our football betting app! This time, we have a map called
 'gameEvents' (see below) with a log of the events that happened during the
