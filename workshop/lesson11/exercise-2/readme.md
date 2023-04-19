@@ -257,4 +257,130 @@
    module.exports = tourRoute;
    ```
 
-10. Finish.
+10. Separate all server code from the route.
+
+    - Create new file [server.js](server.js) and move this code from [app.js](app.js)
+
+      ```
+      'use strict';
+
+      const port = 3000;
+      app.listen(port, () => {
+        console.log(`App listening on ${port}...`);
+      });
+      ```
+
+    - Make the [app.js](app.js) as a module.
+
+      ```
+      'use strict';
+
+      const express = require('express');
+      const tourRoute = require('./tours/tourRoutes');
+
+      const app = express();
+      app.use(express.json());
+      app.use('/api/v1/tours', tourRoute);
+
+      module.exports = app;
+      ```
+
+    - Import the app module in the [server.js](server.js)
+
+      ```
+      'use strict';
+
+      const app = require('./app');
+
+      const port = 3000;
+      app.listen(port, () => {
+        console.log(`App listening on ${port}...`);
+      });
+      ```
+
+    - Stop the running app and start the app by using this commnad:
+      ```
+      > node server.js
+      ```
+
+11. Run the Node App using `nodemon`
+    - Install nodemon:
+      ```
+      > npm i --global nodemon
+      ```
+    - Run the node app
+      ```
+      > nodemon server.js
+      ```
+    - Or we can set this command in package.json
+      ```
+      {
+        "name": "natours",
+        "version": "1.0.0",
+        "main": "index.js",
+        "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "start": "nodemon server.js"                             << Insert your code here
+        },
+        "author": "",
+        "license": "ISC",
+        "dependencies": {
+          "express": "^4.18.2"
+        },
+        "description": ""
+      }
+      ```
+    - Then, run this command:
+      ```
+      > npm start
+      ```
+12. Serving a Static Files
+
+    - To serving a static files, add the code below to [app.js](app.js)
+
+      ```
+      app.use(express.static(`${__dirname}/public`));
+      ```
+
+    - Open browser and navigate to URL `http://127.0.0.1:3000/overview.html`
+
+13. Environment Variables
+
+    - Install the `dotenv`
+      ```
+      > npm i dotenv
+      ```
+    - Create new file [config.env](config.env) and create some variables
+
+      ```
+      NODE_ENV = development
+      PORT = 3000
+      ```
+
+    - Then, require the `dotenv` module in the [server.js](server.js) file
+
+      ```
+      const dotenv = require('dotenv');
+      ```
+
+    - In the [server.js](server.js) file, loads environment variables from a [config.env](config.env) file into `process.env`
+
+      ```
+      dotenv.config({ path: './config.env' });
+      ```
+
+    - Config the port number from environment variable by editing the code in [server.js](server.js) as shown below:
+
+      ```
+      'use strict';
+      const dotenv = require('dotenv');
+      dotenv.config({ path: './config.env' });
+
+      const app = require('./app');
+      const port = process.env.PORT || 3000;
+      app.listen(port, () => {
+        console.log(`App listening on ${port}...`);
+      });
+      ```
+
+14. Finish.
