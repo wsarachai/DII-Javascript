@@ -1,4 +1,4 @@
 ## [Home](../../README.md) > Lesson-03: Website development with HTML and CSS
 
-1. [Execrise #1](execrise-1/readme.md)
-2. [Execrise #2](execrise-2/readme.md)
+1. [Exercise #1](exercise-1/readme.md)
+2. [Exercise #2](exercise-2/readme.md)

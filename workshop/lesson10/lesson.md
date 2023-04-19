@@ -1,3 +1,3 @@
 ## [Home](../../README.md) > Node.JS
 
-1. [Execrise #1](execrise-1/readme.md)
+1. [Exercise #1](exercise-1/readme.md)

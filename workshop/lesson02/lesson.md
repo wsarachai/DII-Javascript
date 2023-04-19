@@ -1,9 +1,9 @@
 ## [Home](../../README.md) > Lesson-02: Advance JavaScript
 
-1. [Execrise #1](execrise-1/readme.md)
-2. [Execrise #2](execrise-2/readme.md)
-3. [Execrise #3](execrise-3/readme.md)
-4. [Execrise #4](execrise-4/readme.md)
-5. [Execrise #5](execrise-5/readme.md)
-6. [Execrise #6](execrise-6/readme.md)
-7. [Execrise #7](execrise-7/readme.md)
+1. [Exercise #1](exercise-1/readme.md)
+2. [Exercise #2](exercise-2/readme.md)
+3. [Exercise #3](exercise-3/readme.md)
+4. [Exercise #4](exercise-4/readme.md)
+5. [Exercise #5](exercise-5/readme.md)
+6. [Exercise #6](exercise-6/readme.md)
+7. [Exercise #7](exercise-7/readme.md)
