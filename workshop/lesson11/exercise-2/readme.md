@@ -6,8 +6,8 @@
 
 1. Copy the lesson11->exercise-2 to lesson12->exercise-1, we will use MongoDB the instead
 
-   - Run `> npm init`
-   - Run `> npm i express@4`
+   - Run `> npm i mongodb@5`
+   - Run `> npm i mongoose@5`
    - Create the `app.js` file
    - Write the basic code for express application
 
