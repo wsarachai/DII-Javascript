@@ -4,7 +4,7 @@
 
 #### Create the natours web
 
-1. According to the exercise-1: Init the node project in the `execrcise-2` directory
+1. Copy the lesson11->exercise-2 to lesson12->exercise-1, we will use MongoDB the instead
 
    - Run `> npm init`
    - Run `> npm i express@4`
