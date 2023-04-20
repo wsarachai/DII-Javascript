@@ -1,6 +1,6 @@
 'use strict';
 
-const Tour = require('./../models/tourModel');
+const Tour = require('../models/tourModel');
 
 exports.getAllTours = async (req, res) => {
   try {
