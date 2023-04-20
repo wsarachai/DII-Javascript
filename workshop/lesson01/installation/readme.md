@@ -2,5 +2,5 @@
 
 ### Your tasks:
 
-- [VSCode Installation and Settings](exercise-1/exercise-1.md)
+- [VSCode Installation and Settings](exercise-1/)
 - [VSCode Text Editor](exercise-2/exercise-2.md)
