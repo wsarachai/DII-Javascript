@@ -11,11 +11,11 @@
    > npm init
    ```
 
-   - Type the package name: `package name: (exercise-1) natours`
+   - Type the package name: `package name: (exercise-1) camt-tours`
    - And the other options leave it as the default by pressing the `enter` key as shown below:
      ```
      Press ^C at any time to quit.
-     package name: (exercise-1) natours
+     package name: (exercise-1) camt-tours
      version: (1.0.0)
      description:
      entry point: (index.js)
@@ -26,7 +26,7 @@
      license: (ISC)
      About to write to /Users/watcharinsarachai/Documents/workspace/javascript/DII-Javascript workshop/lesson11/test/package.json:
      {
-       "name": "natours",
+       "name": "camt-tours",
        "version": "1.0.0",
        "description": "",
        "main": "index.js",
