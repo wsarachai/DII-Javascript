@@ -48,7 +48,7 @@
 
    - Click `New connection` and paste the connection link you saved in the previous step
      <br/><br/><img width="800" src="img/img13.png"/><br/></br>
-   - Replace `<password>` with your password generated in the previous step and Click `Connect`
+   - Replace `<password>` section with your password generated in the previous step and Click `Connect`
    - `Optional setting:` If you can't connect to the database, we need to allow the clients can access our database server from anywhere
      - Click `Network Access` then on the `IP Address' section, click `EDIT`
        <br/><br/><img width="800" src="img/img14.png"/><br/></br>

@@ -6,383 +6,356 @@
 
 1. Copy the source code from `lesson11->exercise-2` to `lesson12->exercise-1`, we will use MongoDB the instead
 
-    - In the terminal, change the current directory to `lesson12/exercise-2`
-    - Install `Mongodb` and `Mongoose` modules to the current project using the following commands:
-        - Run `> npm i mongodb@5`
-        - Run `> npm i mongoose@5`
-    - Create the `app.js` file
-    - Write the basic code for express application
+   - In the terminal, change the current directory to `lesson12/exercise-2`
+   - Install `Mongodb` and `Mongoose` modules to the current project using the following commands:
+     - Run `> npm i mongodb@5`
+     - Run `> npm i mongoose@5`
 
-      ```
-      'use strict';
-      const express = require('express');
- 
-      const app = express();
- 
-      app.get('/', (req, res) => {
-        res.status(200).send('Hello, world');
-      });
- 
-      const port = 3000;
-      app.listen(port, () => {
-        console.log(`listening on port ${port}...`);
-      });
-      ```
+2. Get the connection string from MongoDB server
 
-2. Return the JSON data from the `dev-data/data/tours-simple.json` file
-    - Insert the required modules into the [appl.js](app.js) file
-      ```
-      ...
-      const fs = require('fs');
-      const path = require('path');
-      ...
-      ```
-    - Load the global JSON data from the `dev-data/data/tours-simple.json`
-      ```
-      const jsonData = fs.readFileSync(
-        path.join(__dirname, 'dev-data', 'tours-simple.json'),
-        'utf-8'
-      );
-      const tours = JSON.parse(jsonData);
-      ```
-    - For the HTTP GET method
-        - Create the route `/api/v1/tours` and return the JSON as the response
-          `app.get('/api/v1/tours', (req, res) => { res.status(200).json({ status: 'success', results: tours.length, data: tours, }); });`
-          <br/><br/><img width="512" src="img/img.png"/><br/><br/>
-3. Create the new tour data
+   - Got to [https://www.mongodb.com/atlas](https://www.mongodb.com/atlas)
+   - Start with a free account:
 
-    - We use the HTTP POST method to create the tour data
-        - To get the data from a client, we must use a middleware. Adter the line of code `const app = express();` insert the code as shown below:
-          ```
-          ...
-          const app = express();
-          app.use(express.json()); // << insert this code
-          ...
-          ```
-    - Create the POST route
+     - Login to the system.
+     - Choose `camt-tours-app` project
+     - Get the connection string from MongoDB server
 
-      ```
-      app.post('/api/v1/tours', (req, res) => {
- 
-      });
-      ```
+       - Click `Connect`
+         <br/><br/><img width="512" src="img/img.png"/><br/><br/>
+       - Click `Drivers`
+         <br/><br/><img width="512" src="img/img2.png"/><br/><br/>
+       - Make sure you select the correct `Node.js` and version and then copy the connection link
+         <br/><br/><img width="512" src="img/img3.png"/><br/><br/>
+       - Save the connection string in our project in [config.env](config.env) file
+       - Replace `<password>` section with your password generated in the previous step and append the URL with your database name. For our case, the database name is `CAMT`
+         For example the original connection string:
 
-    - Get the new `tour` data and append it to the `tours` object by modifying the code in the previous step
+         ```
+         mongodb+srv://xxxxxxxx:<password>@cluster0.9vaizzr.mongodb.net/?retryWrites=true&w=majority
+         ```
 
-      ```
-      app.post('/api/v1/tours', (req, res) => {
-        const newId = tours[tours.length - 1].id + 1;
-        const newTour = Object.assign({id: newId}, req.body);
-        tours.push(newTour);
-      });
-      ```
+         Change to:
 
-    - After inserted the `tour` object, save it back to the orignal `tours-simple.json` file
+         ```
+         mongodb+srv://yourusername:yourpassword@cluster0.9vaizzr.mongodb.net/CAMT?retryWrites=true&w=majority
+         ```
 
-      ```
-      app.post('/api/v1/tours', (req, res) => {
-        const newId = tours[tours.length - 1].id + 1;
-        const newTour = Object.assign({id: newId}, req.body);
-        tours.push(newTour);
- 
-        fs.writeFile(
-          path.join(__dirname, 'dev-data', 'tours-simple.json'),
-          JSON.stringify(tours),
-          err => {
-            res.status(200).json({
-              status: 'success',
-              data: newTour,
-            });
-          }
-        );
-      });
-      ```
+         In [config.env](config.env) file:
 
-4. Test insert a new tour data
+         ```
+         NODE_ENV = development
+         PORT = 3000
+         DATABASE=mongodb+srv://yourusername:yourpassword@cluster0.9vaizzr.mongodb.net/CAMT?retryWrites=true&w=majority
+         ```
 
-    - Open the postman and use the POST method to send the data below to the POST route `/api/v1/tours`
-      ```
-      {
-        "name": "The Sport Lover",
-        "startLocation": "Californear, USA",
-        "nextStartDate": "July 2023",
-        "duration": 14,
-        "difficulty": "difficult",
-        "ratingsAverage": 4.7,
-        "ratingsQuantity": 23,
-        "price": 2997
-      }
-      ```
-      <br/><img width="512" src="img/img2.png"/><br/><br/>
-    - Click the `Send` button
+3. Let’s connect the Mongoose to our database server
 
-5. Get the one tour by ID
-    - Add GET route `/api/v1/tours/:id`
-      ```
-      app.get('/api/v1/tours/:id', (req, res) => {
-        const id = Number.parseInt(req.params.id);
-        const tour = tours.find(el => el.id === id);
-        if (!tour) {
-          return res.status(404).json({
-            status: 'failed',
-            message: 'Tour not found',
-          });
-        }
-        res.status(200).json({
-          status: 'success',
-          data: tour,
-        });
-      });
-      ```
-    - Test get `tour.id = 9`
-      <br/><br/><img width="512" src="img/img3.png"/><br/><br/>
-6. Organize the Callback Function
-    - Refactoring our routes by using the function
-      ```
-      ...
-      app.get('/api/v1/tours', getAllTours);
-      app.post('/api/v1/tours', createTour);
-      app.get('/api/v1/tours/:id', getTour);
-      ...
-      ```
-    - Test the web
-    - Update the previous code to use `app.route()` to group it together
-      ```
-      ...
-      app.route('/api/v1/tours/').get(getAllTours).post(createTour);
-      app.route('/api/v1/tours/:id').get(getTour);
-      ...
-      ```
-    - Test the web
-7. Creating and Mounting Multiple Routes
-    - Create route middleware.
-      ```
-      const tourRoute = express.Router();
-      ```
-    - Map tours route to it
-      ```
-      app.use('/api/v1/tours', tourRoute);
-      ```
-    - Modify the tours route to use the new Router object.
-      ```
-      tourRoute.route('/').get(getAllTours).post(createTour);
-      tourRoute.route('/:id').get(getTour);
-      ```
-    - Test the web
-8. Better Structure
+   - Edit the [server.js](server.js) file with the code as shown below:
 
-    - Create the `tours` directory
-    - Create the [tours/tourRoutes.js](tours/tourRoutes.js), and move all tour handler functions to it
+     ```
+     'use strict';
+     const mongoose = require('mongoose');
+     const dotenv = require('dotenv');
+     dotenv.config({ path: './config.env' });
 
-      ```
-      ...
-      const getAllTours = (req, res) => { ... };
-      const createTour = (req, res) => { ... };
-      const getTour = (req, res) => { ... };
-      ...
-      ```
+     const DB = process.env.DATABASE;
+     mongoose
+       .connect(DB, {
+         useNewUrlParser: true,
+         useCreateIndex: true,
+         useFindAndModify: false,
+       })
+       .then(() => {
+         console.log('DB Connection successful!');
+       });
 
-      tourRoutes.js
+     const app = require('./app');
+     const port = process.env.PORT || 3000;
+     app.listen(port, () => {
+       console.log(`App listening on ${port}...`);
+     });
+     ```
 
-      ```
-      'use strict';
-      const express = require('express');
-      const fs = require('fs');
-      const path = require('path');
- 
-      const jsonData = fs.readFileSync(...);
-      const tours = JSON.parse(jsonData);
- 
-      const tourRoute = express.Router();
- 
-      const getAllTours = (req, res) => { ... };
-      const createTour = (req, res) => { ... };
-      const getTour = (req, res) => { ... };
- 
-      tourRoute.route('/').get(getAllTours).post(createTour);
-      tourRoute.route('/:id').get(getTour);
- 
-      module.exports = tourRoute;
-      ```
+   - Start the Node application
+     ```
+     > nodemon server.js
+     ```
+     <i>The message `DB Connection successful!` should be appeared</i>
 
-      Don’t forget move the tours data to “tourRoutes.js”
+4. Create a Simple Tour Model
 
-    - Modify the [app.js](app.js) to use the `tourRoutes.js` module.
+   - First, create a Tour schema
 
-      ```
-      'use strict';
-      const express = require('express');
-      const tourRoute = require('./tours/tourRoutes');
- 
-      const app = express();
-      app.use(express.json());
- 
-      app.use('/api/v1/tours', tourRoute);
- 
-      const port = 3000;
-      app.listen(port, () => {
-        console.log(`listening on port ${port}...`);
-      });
-      ```
+     - Create a new directory name `models` at `lesson12/exercise-2/models`
+     - Create a new file `tourModel.js` with the following code below:
 
-9. Better Structure, move all tour functions to the [tours/tourController.js](tours/tourController.js)
+     ```
+     'use strict';
 
-   ```
-   'use strict';
+     const mongoose = require('mongoose');
 
-   const fs = require('fs');
-   const path = require('path');
+     const toursSchema = mongoose.Schema({
+       name: {
+         type: String,
+         required: [true, 'A tour must name a name'],
+         unique: true,
+       },
+       rating: { type: Number, default: 4.5 },
+       price: { type: Number, required: [true, 'A tour must price'] },
+     });
 
-   const jsonData = fs.readFileSync(...);
-   const tours = JSON.parse(jsonData);
+     const Tour = mongoose.model('Tour', toursSchema);
 
-   exports.getAllTours = (req, res) => {...};
-   exports.createTour = (req, res) => {...};
-   exports.getTour = (req, res) => {...};
-   ```
+     module.exports = Tour;
+     ```
 
-   tourRoutes.js
+5. Modify the tourController to use Tour model
 
-   ```
-   'use strict';
-   const express = require('express');
-   const tourController = require('../controllers/tourController');
+   - In [tourController.js](controllers/tourController.js) remove the code that load tour data from file
+     from
 
-   const tourRoute = express.Router();
+     ```
+     const fs = require('fs');
+     const path = require('path');
 
-   tourRoute
-     .route('/')
-     .get(tourController.getAllTours)
-     .post(tourController.createTour);
-   tourRoute.route('/:id').get(tourController.getTour);
+     const jsonData = fs.readFileSync(
+       path.join(__dirname, '../dev-data', 'tours-simple.json'),
+       'utf-8'
+     );
+     const tours = JSON.parse(jsonData);
+     ```
 
-   module.exports = tourRoute;
-   ```
+     to
 
-10. Separate all server code from the route.
+     ```
+     const Tour = require('../models/tourModel');
+     ```
 
-    - Create new file [server.js](server.js) and move this code from [app.js](app.js)
+   - In [tourController.js](controllers/tourController.js) modify the `getAllTour` method
+     From
 
-      ```
-      'use strict';
+     ```
+     exports.getAllTours = (req, res) => {
+       res.status(200).json({
+         status: 'success',
+         results: tours.length,
+         data: tours,
+       });
+     };
+     ```
 
-      const port = 3000;
-      app.listen(port, () => {
-        console.log(`App listening on ${port}...`);
-      });
-      ```
+     to
 
-    - Make the [app.js](app.js) as a module.
+     ```
+     exports.getAllTours = async (req, res) => {
+       try {
+         const tours = await Tour.find();
 
-      ```
-      'use strict';
+         res.status(200).json({
+           status: 'success',
+           results: tours.length,
+           data: tours,
+         });
+       } catch (err) {
+         res.status(400).json({
+           status: 'Failed',
+           message: err,
+         });
+       }
+     };
+     ```
 
-      const express = require('express');
-      const tourRoute = require('./tours/tourRoutes');
+   - Test `getAllTour` in the `Postman` using `GET` method with URL `http://127.0.0.1:3000/api/v1/tours`
+     <br/><br/><img width="600" src="img/img4.png"/><br/><br/>
 
-      const app = express();
-      app.use(express.json());
-      app.use('/api/v1/tours', tourRoute);
+   - In [tourController.js](controllers/tourController.js) modify the `getTour` method
+     From
 
-      module.exports = app;
-      ```
+     ```
+     exports.getTour = (req, res) => {
+       const id = Number.parseInt(req.params.id);
+       const tour = tours.find(el => el.id === id);
+       if (!tour) {
+         return res.status(404).json({
+           status: 'failed',
+           message: 'Tour not found',
+         });
+       }
+       res.status(200).json({
+         status: 'success',
+         data: tour,
+       });
+     };
+     ```
 
-    - Import the app module in the [server.js](server.js)
+     to
 
-      ```
-      'use strict';
+     ```
+     exports.getTour = async (req, res) => {
+       try {
+         const tour = await Tour.findById(req.params.id);
 
-      const app = require('./app');
+         res.status(200).json({
+           status: 'Success',
+           message: tour,
+         });
+       } catch (err) {
+         res.status(400).json({
+           status: 'Failed',
+           message: err,
+         });
+       }
+     };
+     ```
 
-      const port = 3000;
-      app.listen(port, () => {
-        console.log(`App listening on ${port}...`);
-      });
-      ```
+   - Test `getTour` in the `Postman` using `GET` method with URL `http://127.0.0.1:3000/api/v1/tours/<your tour ID>`
+     <br/><br/><img width="600" src="img/img5.png"/><br/><br/>
+     <i>Warning: the ID in `GET` URL should be your `tour` ID in your database</i>, for example `http://127.0.0.1:3000/api/v1/tours/643faf974ba21c09543966ed`
 
-    - Stop the running app and start the app by using this commnad:
-      ```
-      > node server.js
-      ```
+   - In [tourController.js](controllers/tourController.js) modify the `createTour` method
+     From
 
-11. Run the Node App using `nodemon`
-    - Install nodemon:
-      ```
-      > npm i --global nodemon
-      ```
-    - Run the node app
-      ```
-      > nodemon server.js
-      ```
-    - Or we can set this command in package.json
-      ```
-      {
-        "name": "natours",
-        "version": "1.0.0",
-        "main": "index.js",
-        "scripts": {
-          "test": "echo \"Error: no test specified\" && exit 1",
-          "start": "nodemon server.js"                             << Insert your code here
-        },
-        "author": "",
-        "license": "ISC",
-        "dependencies": {
-          "express": "^4.18.2"
-        },
-        "description": ""
-      }
-      ```
-    - Then, run this command:
-      ```
-      > npm start
-      ```
-12. Serving a Static Files
+     ```
+     exports.createTour = (req, res) => {
+       const newId = tours[tours.length - 1].id + 1;
+       const newTour = Object.assign({ id: newId }, req.body);
+       tours.push(newTour);
 
-    - To serving a static files, add the code below to [app.js](app.js)
+       fs.writeFile(
+         path.join(__dirname, 'dev-data', 'tours-simple.json'),
+         JSON.stringify(tours),
+         err => {
+           res.status(200).json({
+             status: 'success',
+             data: newTour,
+           });
+         }
+       );
+     };
+     ```
 
-      ```
-      app.use(express.static(`${__dirname}/public`));
-      ```
+     to
 
-    - Open browser and navigate to URL `http://127.0.0.1:3000/overview.html`
+     ```
+     exports.createTour = async (req, res) => {
+       try {
+         const tour = await Tour.create(req.body);
 
-13. Environment Variables
+         res.status(200).json({
+           status: 'Success',
+           message: tour,
+         });
+       } catch (err) {
+         res.status(400).json({
+           status: 'Failed',
+           message: err,
+         });
+       }
+     };
+     ```
 
-    - Install the `dotenv`
-      ```
-      > npm i dotenv
-      ```
-    - Create new file [config.env](config.env) and create some variables
+   - Test `createTour` in the `Postman` using `POST` method with URL `http://127.0.0.1:3000/api/v1/tours`
 
-      ```
-      NODE_ENV = development
-      PORT = 3000
-      ```
+     - In the `Body` tab, select `raw`->`JSON` and paste this JSON data
+       ```
+       {
+           "name": "The Sea Explorer",
+           "rating": 4.8,
+           "price": 497
+       }
+       ```
+       <br/><img width="600" src="img/img6.png"/><br/><br/>
 
-    - Then, require the `dotenv` module in the [server.js](server.js) file
+   - In [tourController.js](controllers/tourController.js), create the new `updateTour` method as shown below:
 
-      ```
-      const dotenv = require('dotenv');
-      ```
+     ```
+     exports.updateTour = async (req, res) => {
+       try {
+         const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+           new: true,
+           runValidators: true,
+         });
 
-    - In the [server.js](server.js) file, loads environment variables from a [config.env](config.env) file into `process.env`
+         res.status(200).json({
+           status: 'Success',
+           data: { tour },
+         });
+       } catch (err) {
+         res.status(400).json({
+           status: 'Failed',
+           message: err,
+         });
+       }
+     };
+     ```
 
-      ```
-      dotenv.config({ path: './config.env' });
-      ```
+   - In [tours/tourRoutes.js](tours/tourRoutes.js), update the code fragment from
 
-    - Config the port number from environment variable by editing the code in [server.js](server.js) as shown below:
+     ```
+     tourRoute.route('/:id').get(tourController.getTour);
+     ```
 
-      ```
-      'use strict';
-      const dotenv = require('dotenv');
-      dotenv.config({ path: './config.env' });
+     to
 
-      const app = require('./app');
-      const port = process.env.PORT || 3000;
-      app.listen(port, () => {
-        console.log(`App listening on ${port}...`);
-      });
-      ```
+     ```
+     tourRoute
+       .route('/:id')
+       .get(tourController.getTour)
+       .patch(tourController.updateTour); // add this line
+     ```
 
-14. Finish.
+   - Test `updateTour` in the `Postman` using `PATCH` method with URL `http://127.0.0.1:3000/api/v1/tours/<your tour ID>`
+
+     - In the `Body` tab, select `raw`->`JSON` and paste this JSON data
+       ```
+       {
+           "price": 500
+       }
+       ```
+       <br/><img width="600" src="img/img6.png"/><br/><br/>
+       <i>Warning: the ID in `PATCH` URL should be your `tour` ID in your database</i>, for example `http://127.0.0.1:3000/api/v1/tours/643faf974ba21c09543966ed`
+
+   - In [tourController.js](controllers/tourController.js), create the new `deleteTour` method as shown below:
+
+     ```
+     exports.deleteTour = async (req, res) => {
+       try {
+         await Tour.findByIdAndDelete(req.params.id);
+
+         res.status(204).json({
+           status: 'Success',
+           message: null,
+         });
+       } catch (err) {
+         res.status(400).json({
+           status: 'Failed',
+           message: err,
+         });
+       }
+     };
+     ```
+
+   - In [tours/tourRoutes.js](tours/tourRoutes.js), update the code fragment from
+
+     ```
+     tourRoute
+       .route('/:id')
+       .get(tourController.getTour)
+       .patch(tourController.updateTour);
+     ```
+
+     to
+
+     ```
+     tourRoute
+       .route('/:id')
+       .get(tourController.getTour)
+       .patch(tourController.updateTour)
+       .delete(tourController.deleteTour);  // add this line
+     ```
+
+   - Test `deleteTour` in the `Postman` using `DELETE` method with URL `http://127.0.0.1:3000/api/v1/tours/<your tour ID>`
+     <br/><br/><img width="600" src="img/img7.png"/><br/><br/>
+     <i>Warning: the ID in `PATCH` URL should be your `tour` ID in your database</i>, for example `http://127.0.0.1:3000/api/v1/tours/643faf974ba21c09543966ed`
+
+6. Finish.
