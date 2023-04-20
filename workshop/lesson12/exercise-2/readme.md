@@ -4,10 +4,12 @@
 
 #### Modify the camt-tours web using the MongoDB
 
-1. Copy the lesson11->exercise-2 to lesson12->exercise-1, we will use MongoDB the instead
+1. Copy the source code from `lesson11->exercise-2` to `lesson12->exercise-1`, we will use MongoDB the instead
 
-    - Run `> npm i mongodb@5`
-    - Run `> npm i mongoose@5`
+    - In the terminal, change the current directory to `lesson12/exercise-2`
+    - Install `Mongodb` and `Mongoose` modules to the current project using the following commands:
+        - Run `> npm i mongodb@5`
+        - Run `> npm i mongoose@5`
     - Create the `app.js` file
     - Write the basic code for express application
 

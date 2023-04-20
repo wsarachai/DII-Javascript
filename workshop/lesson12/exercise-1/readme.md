@@ -2,7 +2,7 @@
 
 ### Your tasks:
 
-#### Setting up MongoDB
+#### Setting up the hosting database for MongoDB
 
 1. Create a Hosting Database With Atlas
 
