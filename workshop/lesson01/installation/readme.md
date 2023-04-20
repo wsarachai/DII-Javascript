@@ -3,4 +3,4 @@
 ### Your tasks:
 
 - [VSCode Installation and Settings](exercise-1/execrise-1.md)
-- [VSCode Text Editor](exercise-2/exercise-2.md)
+- [VSCode Text Editor](exercise-2/execrise-2.md)
