@@ -45,8 +45,16 @@
       ```
     - For the HTTP GET method
         - Create the route `/api/v1/tours` and return the JSON as the response
-          `app.get('/api/v1/tours', (req, res) => { res.status(200).json({ status: 'success', results: tours.length, data: tours, }); });`
-          <br/><br/><img width="512" src="img/img.png"/><br/><br/>
+          ```
+          app.get('/api/v1/tours', (req, res) => {
+            res.status(200).json({
+              status: 'success',
+              results: tours.length,
+              data: tours,
+            });
+          });
+          ```
+          <br/><img width="512" src="img/img.png"/><br/><br/>
 3. Create the new tour data
 
     - We use the HTTP POST method to create the tour data
