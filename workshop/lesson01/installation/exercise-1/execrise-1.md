@@ -4,7 +4,7 @@
 
 1.  Download and install Google Chrome browser:
     - Goto [Chrome download page](https://www.google.com/intl/en_sg/chrome/)
-2.  Download and install Vistual Studio Code:
+2.  Download and install Visual Studio Code:
     - Goto [Visual Studio downlaod](https://code.visualstudio.com/download)
     - Download the installation file depending on your operating system.
     - After the installation is completed, run and execute the program.
