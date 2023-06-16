@@ -4,7 +4,7 @@
 
 #### According to the slide of lesson10, create the simple web
 
-1. Open [index.js](../index.js) file and write the code below:
+1. Open [index.js](index.js) file and write the code below:
 
    ```
    'use strict';
