@@ -31,3 +31,10 @@ Node: you can use `console.log(response)` to see the details.
 - Country or City 1: Chiang Mai
 - Coordinates 2: London
 - Coordinates 3: Usa
+
+Challenge:
+
+- Use the built-in browser API to get the current location `navigator.geolocation.getCurrentPosition()` to get the weather information.
+  ```
+  navigator.geolocation.getCurrentPosition(position => console.log(position);
+  ```

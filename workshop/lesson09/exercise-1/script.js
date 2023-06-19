@@ -47,7 +47,7 @@ const renderError = function (msg) {
 
 const getWeatherData = function (city) {
   fetch(
-    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APPID}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APPID}` // Change this 'https://geocode.xyz' instead
   )
     .then(response => response.json())
     .then(data => {
