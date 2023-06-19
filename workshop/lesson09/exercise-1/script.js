@@ -47,15 +47,13 @@ const renderError = function (msg) {
 
 const getWeatherData = function (city) {
   fetch(
-    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APPID}`
+    `https://geocode.xyz/Chiang+Mai?json=1&auth=487327233257414499510x10195`
   )
     .then(response => response.json())
     .then(data => {
-      if (data.length <= 0)
-        throw new Error(`Can't find the [${city}] city name`);
-      const [{ lat, lon }] = data;
+      const { latt, longt } = data;
       return fetch(
-        `${weatherHost}?lat=${lat}&lon=${lon}&APPID=${APPID}&units=Metric&lang=th`
+        `${weatherHost}?lat=${latt}&lon=${longt}&APPID=${APPID}&units=Metric&lang=th`
       );
     })
     .then(response => response.json())
@@ -70,7 +68,7 @@ const getWeatherData = function (city) {
 };
 
 btn.addEventListener('click', () => {
-  getWeatherData('Chiang Mai');
+  getWeatherData('Chiang+Mai');
 });
 
 // 1. 1. The "https://api.openweathermap.org/geo/1.0/direct" API uses the name of the country to get the information including the location that we use to get the weather data. However,  we will use another Web API. Modify the weather code by replacing the 'https://api.openweathermap.org/geo/1.0/direct' with the new Geoparsing API (API Doc: https://geocode.xyz/api) to get the location instesd, For example, the AJAX call will be called to the URL with this format: 'https://geocode.xyz/Chiang+Mai?json=1'. Use the fetch API and promises to get the data.
