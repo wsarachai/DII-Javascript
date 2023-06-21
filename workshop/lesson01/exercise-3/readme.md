@@ -7,7 +7,7 @@ calculated using the formula:
 BMI = mass / (height * height)
 ```
 
-Note: mass in kg and height in meterß
+Note: mass in kg and height in meter
 
 ### Your tasks:
 
