@@ -3,40 +3,73 @@
 const btn = document.querySelector('.btn-weather');
 const weatherContainer = document.querySelector('.weathers');
 
-const weatherHost = 'http://api.openweathermap.org/data/2.5/weather';
-const APPID = '2846a532501b4c37921bfd3614d8c26a';
-
 ///////////////////////////////////////
-const getWeatherData = (lat, lon) => {
-  const request = new XMLHttpRequest();
+const weatherHost = 'http://api.openweathermap.org/data/2.5/weather';
+const APPID = '0819004d5d111c6827274ee2ef9efa22';
+const city = 'Chiang Mai';
 
-  const url = `${weatherHost}?lat=${lat}&lon=${lon}&APPID=${APPID}&units=Metric&lang=th`;
-  request.open('GET', `${url}`);
-  request.send();
-
-  request.addEventListener('load', function () {
-    const data = JSON.parse(request.responseText);
-    const html = `<article class="weather">
+const renderWeather = function (data) {
+  const html = `<article class="weather">
   <div class="weather__data">
-    <img class="country__img"
-         src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"/>
+    <img
+      class="weather__img"
+      src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"
+    />
     <div>
       <h3 class="weather__name">${data.name}</h3>
       <h4 class="weather__clouds">${data.weather[0].description}</h4>
-      <p class="weather__row"><span>🌡 อุณหภูมิ</span>${data.main.temp}&#176;C</p>
-      <p class="weather__row"><span>💦 ความชื้น</span>${data.main.pressure}&#37;</p>
-      <p class="weather__row"><span>🌎 ความกด</span>${data.main.humidity} hPa</p>
-      <p class="weather__row"><span>💨 ความเร็วลม</span>${data.wind.speed} km/h</p>
-      <p class="weather__row"><span>🧭 ทิศทางลม</span>${data.wind.deg}&#176;</p>
+      <p class="weather__row">
+        <span>🌡 อุณหภูมิ</span>${data.main.temp}&#176;C
+      </p>
+      <p class="weather__row">
+        <span>💦 ความชื้น</span>${data.main.humidity}&#37;
+      </p>
+      <p class="weather__row">
+        <span>🌎 ความกด</span>${data.main.pressure} hPa
+      </p>
+      <p class="weather__row">
+        <span>💨 ความเร็วลม</span>${data.wind.speed} km/h
+      </p>
+      <p class="weather__row">
+        <span>🧭 ทิศทางลม</span>${data.wind.deg}&#176;
+      </p>
     </div>
   </div>
 </article>`;
-    weatherContainer.insertAdjacentHTML('beforeend', html);
-    weatherContainer.style.opacity = 1;
+
+  weatherContainer.insertAdjacentHTML('beforeend', html);
+  weatherContainer.style.opacity = 1;
+};
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
 
+const renderError = function (err) {
+  const html = `<article class="weather">💥💥💥 ${err}</article>`;
+  weatherContainer.insertAdjacentHTML('beforeend', html);
+  weatherContainer.style.opacity = 1;
+};
+
+const getWeatherData = async function () {
+  try {
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lon } = pos.coords;
+    const response = await fetch(
+      `${weatherHost}?lat=${lat}&lon=${lon}&APPID=${APPID}&units=Metric&lang=th`
+    );
+    const data = await response.json();
+    renderWeather(data);
+  } catch (err) {
+    console.log(err.message);
+    renderError(err.message);
+  }
+};
+
+// btn.addEventListener('click', getWeatherData);
+
 btn.addEventListener('click', () => {
-  getWeatherData(18.89927, 99.012103);
-  getWeatherData(53.432031109710564, -2.9608300022781577);
+  Promise.race([getWeatherData(), getWeatherData()]);
 });

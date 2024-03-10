@@ -5,7 +5,7 @@ const weatherContainer = document.querySelector('.weathers');
 ///////////////////////////////////////
 const weatherHost = 'http://api.openweathermap.org/data/2.5/weather';
 const locationHost = 'https://api.openweathermap.org/geo/1.0/direct';
-const APPID = '8d3d35a90ed56ca9bbbd9114d29314ad';
+const APPID = '0819004d5d111c6827274ee2ef9efa22';
 const city = 'Chiang Mai';
 
 const renderWeather = function (data) {
@@ -42,9 +42,7 @@ const renderWeather = function (data) {
 };
 
 const getWeatherData = function (city) {
-  fetch(
-    `${locationHost}?q=${city}&limit=1&appid=8d3d35a90ed56ca9bbbd9114d29314ad`
-  )
+  fetch(`${locationHost}?q=${city}&limit=1&appid=${APPID}`)
     .then(function (response) {
       return response.json();
     })
@@ -62,4 +60,6 @@ const getWeatherData = function (city) {
     });
 };
 
-getWeatherData('Chiang Mai');
+document.querySelector('.btn-weather').addEventListener('click', function () {
+  getWeatherData('Chiang Mai');
+});

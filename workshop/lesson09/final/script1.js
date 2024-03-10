@@ -4,9 +4,12 @@ const weatherContainer = document.querySelector('.weathers');
 
 ///////////////////////////////////////
 const host = 'http://api.openweathermap.org/data/2.5/weather';
-const APPID = '8d3d35a90ed56ca9bbbd9114d29314ad';
+const APPID = '0819004d5d111c6827274ee2ef9efa22';
 
 const getWeatherData = function (lat, lon) {
+
+  //https://geocode.xyz/Chiang+Mai?json=1&auth=487327233257414499510x10195
+
   const request = new XMLHttpRequest();
   const url = `${host}?lat=${lat}&lon=${lon}&APPID=${APPID}&units=Metric&lang=th`;
 
@@ -49,6 +52,8 @@ const getWeatherData = function (lat, lon) {
   });
 };
 
-getWeatherData(18.89927, 99.012103);
-getWeatherData(53.43097000735902, -2.9608300018337403);
-getWeatherData(18.800889885253508, 98.9503662691891);
+document.querySelector('.btn-weather').addEventListener('click', function () {
+  getWeatherData(18.89927, 99.012103);
+  //getWeatherData(53.43097000735902, -2.9608300018337403);
+  //getWeatherData(18.800889885253508, 98.9503662691891);
+});

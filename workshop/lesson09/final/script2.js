@@ -5,7 +5,7 @@ const weatherContainer = document.querySelector('.weathers');
 ///////////////////////////////////////
 const weatherHost = 'http://api.openweathermap.org/data/2.5/weather';
 const locationHost = 'https://api.openweathermap.org/geo/1.0/direct';
-const APPID = '8d3d35a90ed56ca9bbbd9114d29314ad';
+const APPID = '0819004d5d111c6827274ee2ef9efa22';
 
 const renderWeather = function (data) {
   const html = `<article class="weather">
@@ -44,7 +44,7 @@ const getWeatherData = function (city) {
   const request1 = new XMLHttpRequest();
   request1.open(
     'GET',
-    `${locationHost}?q=${city}&limit=1&appid=8d3d35a90ed56ca9bbbd9114d29314ad`
+    `${locationHost}?q=${city}&limit=1&appid=${APPID}`
   );
   request1.send();
   request1.addEventListener('load', function () {
@@ -66,6 +66,8 @@ const getWeatherData = function (city) {
   });
 };
 
-getWeatherData('London');
-getWeatherData('Chiang Mai');
-getWeatherData('Liverpool');
+document.querySelector('.btn-weather').addEventListener('click', function () {
+  //getWeatherData('London');
+  getWeatherData('Chiang Mai');
+  //getWeatherData('Liverpool');
+});
