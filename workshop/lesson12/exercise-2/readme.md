@@ -48,6 +48,14 @@
          DATABASE=mongodb+srv://yourusername:yourpassword@cluster0.9vaizzr.mongodb.net/CAMT?retryWrites=true&w=majority
          ```
 
+         หรือหากสร้างไฟล์เป็น `.env` ให้พิมพ์ข้อมูลดังต่อไปนี้:
+         ```
+         NODE_ENV = development
+         PORT = 8000
+         DB_USER = root
+         DB_PASSWORD = root1234
+         ```
+
 3. Let’s connect the Mongoose to our database server
 
    - Edit the [server.js](server.js) file with the code as shown below:
@@ -74,6 +82,32 @@
      app.listen(port, () => {
        console.log(`App listening on ${port}...`);
      });
+     ```
+
+     หรือในกรณีที่รัน Docker ในเครื่องของนักศึกษาเองให้แก้ไขไฟล์ `server.js` ดังแสดงต่อไปนี้:
+     ```
+     "use strict";
+      const mongoose = require("mongoose");  // <-- เรียก mongoose library ที่นี่
+      const dotenv = require("dotenv");
+      dotenv.config();                       // <-- อ่านค่าจากไฟล์ .env
+      const app = require("./app");
+      
+      // Connect to DB
+      mongoose
+        .connect(
+          `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@localhost:27017/it493?authSource=admin`  // Mongodb connection string
+        )
+        .then(() => {
+          console.log("DB connection successful!");
+        })
+        .catch((err) => {
+          console.log("DB connection error:", err);
+        });
+      
+      const port = process.env.PORT || 8000;
+      app.listen(port, () => {
+        console.log(`App listening on ${port}...`);
+      });
      ```
 
    - Start the Node application
